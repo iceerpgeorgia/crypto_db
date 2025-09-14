@@ -1,0 +1,31 @@
+# Node/Next.js
+node_modules/
+.next/
+.turbo/
+out/
+coverage/
+.vercel/
+
+# Logs
+*.log
+Server_Logs.txt
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Prisma (sqlite dev dbs, if any)
+prisma/*.db
+
