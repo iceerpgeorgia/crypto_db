@@ -1,0 +1,6 @@
+Set-Location C:\next-postgres-starter
+$env:DATABASE_URL='postgresql://postgres:fulebimojviT1985%25@localhost:5432/ICE_ERP?schema=public'
+npx prisma db execute --file .\scripts\auditlog.sql --schema .\prisma\schema.prisma
+npx prisma generate
+npm run dev
+

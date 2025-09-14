@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PRISMA_DATABASE_URL")
+}
+
+model OHLC {
+  id       Int      @id @default(autoincrement())
+  asset    String
+  interval String
+  ts       DateTime
+  open     Float
+  high     Float
+  low      Float
+  close    Float
+  volume   Float?
+
+  @@map("ohlc")
+  @@unique([asset, interval, ts], name: "uq_ohlc_asset_interval_ts")
+  @@index([asset, ts], name: "ix_ohlc_asset_ts")
+}
+
+model DominancePoint {
+  id       Int      @id @default(autoincrement())
+  asset    String
+  interval String
+  ts       DateTime
+  close    Float
+
+  @@map("dominance_points")
+  @@unique([asset, interval, ts], name: "uq_dom_asset_interval_ts")
+  @@index([asset, ts], name: "ix_dom_asset_ts")
+}
+
+model Divergence {
+  id              Int      @id @default(autoincrement())
+  asset           String
+  interval        String
+  ts              DateTime
+  indicator       String
+  kind            String
+  price_swing     Float?
+  indicator_swing Float?
+
+  @@map("divergences")
+  @@index([asset, ts], name: "ix_div_asset_ts")
+}
