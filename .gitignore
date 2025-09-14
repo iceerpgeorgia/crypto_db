@@ -5,30 +5,40 @@ node_modules/
 out/
 coverage/
 .vercel/
+.turbo/
+out/
+coverage/
+.vercel/
 
 # Logs
+
 *.log
 Server_Logs.txt
 
 # Env
+
 .env
 .env.local
 .env.*.local
 
 # Local saved web snapshots (outside project scope)
+
 Crypto Database - Divergence Hunter.html
 Crypto Database - Divergence Hunter_files/
 
 # Editor/OS
+
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 
 # Python
+
 .venv/
-__pycache__/
+pycache/
 *.pyc
 
 # Prisma (sqlite dev dbs, if any)
+
 prisma/*.db
