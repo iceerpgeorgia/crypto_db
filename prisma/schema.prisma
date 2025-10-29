@@ -8,15 +8,21 @@ datasource db {
 }
 
 model OHLC {
-  id       Int      @id @default(autoincrement())
-  asset    String
-  interval String
-  ts       DateTime
-  open     Float
-  high     Float
-  low      Float
-  close    Float
-  volume   Float?
+  id               Int      @id @default(autoincrement())
+  asset            String
+  interval         String
+  ts               DateTime
+  open             Float
+  high             Float
+  low              Float
+  close            Float
+  volume           Float?
+  rsi6             Float?
+  rsi12            Float?
+  rsi24            Float?
+  ema50            Float?
+  sma50            Float?
+  rsiDivergenceId  String?
 
   @@map("ohlc")
   @@unique([asset, interval, ts], name: "uq_ohlc_asset_interval_ts")
@@ -47,4 +53,19 @@ model Divergence {
 
   @@map("divergences")
   @@index([asset, ts], name: "ix_div_asset_ts")
+}
+
+model DominanceOHLC {
+  id       Int      @id @default(autoincrement())
+  asset    String
+  interval String
+  ts       DateTime
+  open     Float
+  high     Float
+  low      Float
+  close    Float
+
+  @@map("dominance_ohlc")
+  @@unique([asset, interval, ts], name: "uq_domohlc_asset_interval_ts")
+  @@index([asset, ts], name: "ix_domohlc_asset_ts")
 }
